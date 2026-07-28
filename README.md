@@ -48,7 +48,7 @@ Powered by **LangChain**, **Groq (Llama 3.1 8B Instant)**, **Chroma DB**, and **
 
 ---
 
-# 📊 Indexed Dataset & Legal Coverage
+ ## 📊 Indexed Dataset & Legal Coverage
 
 The system indexes **44 Legal Statutes & Acts** distributed across **10 Legal Categories**.
 
@@ -68,7 +68,7 @@ The system indexes **44 Legal Statutes & Acts** distributed across **10 Legal Ca
 
 ---
 
-# 🏗️ System Architecture
+## 🏗️ System Architecture
 
 ## 1. Offline Data Ingestion Pipeline
 
