@@ -45,3 +45,49 @@ Powered by **LangChain**, **Groq (Llama 3.1 8B Instant)**, **Chroma DB**, and **
 ├── .env.example             # Environment variables template
 ├── requirements.txt         # Dependencies
 └── README.md
+
+---
+
+# 📊 Indexed Dataset & Legal Coverage
+
+The system indexes **44 Legal Statutes & Acts** distributed across **10 Legal Categories**.
+
+| Legal Sector / Category | Document Count | Examples |
+|---|---:|---|
+| ARMED FORCES ACT | 4 | Army Act, Navy Rules, Air Force Statutes |
+| EDUCATION ACT | 4 | University Acts, Education Board Regulations |
+| ELECTRONICS & MEDIA ACT | 4 | PECA Act, PEMRA Rules |
+| EXCISE AND TAX ACT | 4 | Punjab Excise Act, Sales Tax Provisions |
+| FINANCE ACT | 4 | Annual Finance Acts, Federal Budget Statutes |
+| HEALTHCARE ACT | 6 | Medical Council Ordinance, Healthcare Commission Acts |
+| MINORITIES ACT | 3 | Minority Rights & Protection Acts |
+| PAKISTAN ACT | 5 | Pakistan Penal Code, Criminal Procedure Code |
+| POLICE RULES | 4 | Police Order 2002, Service Regulations |
+| VEHICLES ACT | 5 | Motor Vehicles Ordinance, Traffic Laws |
+| **TOTAL** | **44 Documents** | Full PDF text extracted page-by-page |
+
+---
+
+# 🏗️ System Architecture
+
+## 1. Offline Data Ingestion Pipeline
+
+```mermaid
+graph TD
+
+PDFs["data/books/ PDF Dataset<br/>(44 Files across 10 Sector Folders)"]
+
+PDFLoader["pypdf Loader<br/>(Extracts Text + Page Metadata)"]
+
+Splitter["RecursiveCharacterTextSplitter<br/>(Chunk Size: 800, Overlap: 150)"]
+
+EmbedModel["Embedding Model<br/>(BAAI/bge-small-en-v1.5)"]
+
+ChromaDB[("Chroma DB Vector Store<br/>(./chroma_db)")]
+
+PDFs --> PDFLoader
+PDFLoader --> Splitter
+Splitter --> EmbedModel
+EmbedModel --> ChromaDB
+
+ 
